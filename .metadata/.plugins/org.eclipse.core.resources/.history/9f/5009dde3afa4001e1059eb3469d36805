@@ -1,0 +1,105 @@
+/**********************************************************************************************
+ * Module : RTOS FIFO
+ *
+ * File Name : FIFO.c
+ *
+ * Author: Abdullah Maher
+ *
+ * Description :
+ *
+ * Created on: Aug 8, 2023
+ ***********************************************************************************************/
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+#include"rtos_fifo.h"
+
+
+
+/*===============================================================================
+ *                              API Definitions                                  *
+ ================================================================================*/
+
+/*
+ * Description : Function To Initializing FIFO
+ * */
+FIFO_status FIFO_init(FIFO_t *fifo, DATA_TYPE_t *buff, uint32_t length)
+{
+	if(buff == NULL_PTR)
+	{
+		return 	FIFO_NULL;
+	}
+
+	fifo->base = buff;
+	fifo->head = buff;
+	fifo->tail = buff;
+	fifo->length = length;
+	fifo->count = 0;
+
+
+	return FIFO_NO_ERROR;
+}
+
+
+/*
+ * Description : Function To Add Element in FIFO
+ * */
+FIFO_status FIFO_enqueue(FIFO_t *fifo, DATA_TYPE_t item)
+{
+	if(!(fifo->base) || !(fifo->head) || !(fifo->tail))
+	{
+		return 	FIFO_NULL;
+	}
+
+	if(fifo->count == fifo->length)
+	{
+		return FIFO_FULL;
+	}
+
+
+	*(fifo->head) = item;
+	fifo->count++;
+	if(fifo->head == (fifo->base + (fifo->length * sizeof(DATA_TYPE_t))))
+	{
+		fifo->head = fifo->base;
+	}
+	else
+	{
+		fifo->head++;
+	}
+
+	return FIFO_NO_ERROR;
+}
+
+
+/*
+ * Description : Function To Remove Element From FIFO
+ * */
+FIFO_status FIFO_dequeue(FIFO_t *fifo, DATA_TYPE_t *item)
+{
+	if(!(fifo->base) || !(fifo->head) || !(fifo->tail))
+	{
+		return 	FIFO_NULL;
+	}
+
+	if(fifo->count == 0)
+	{
+		return FIFO_EMPTY;
+	}
+
+
+	*item = *(fifo->tail);
+	fifo->count--;
+	if(fifo->tail == (fifo->base + (fifo->length * sizeof(DATA_TYPE_t))))
+	{
+		fifo->tail = fifo->base;
+	}
+	else
+	{
+		fifo->tail++;
+	}
+
+
+	return FIFO_NO_ERROR;
+}

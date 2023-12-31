@@ -1,0 +1,13 @@
+scheduler.c:129:6:PendSV_ContextSwitch	16	static,ignoring_inline_asm
+scheduler.c:190:6:Dispatch_Next_Task	8	static
+scheduler.c:220:6:SVC_services	24	static
+scheduler.c:264:6:Set_MSP	4	static
+scheduler.c:275:6:IDLE_Task	4	static,ignoring_inline_asm
+scheduler.c:284:6:Create_Task_Stack	24	static
+scheduler.c:310:6:Update_Scheduler	24	static
+scheduler.c:362:6:Bubble_Sort	16	static
+scheduler.c:389:18:MYRTOS_Init	16	static
+scheduler.c:418:18:MYRTOS_StartRTOS	8	static,ignoring_inline_asm
+scheduler.c:446:18:MYRTOS_CreateTask	24	static
+scheduler.c:476:18:MYRTOS_ActivateTask	24	static,ignoring_inline_asm
+scheduler.c:490:18:MYRTOS_TerminateTask	24	static,ignoring_inline_asm

@@ -1,0 +1,119 @@
+/**********************************************************************************************
+ * Module : RTOS FIFO
+ *
+ * File Name : FIFO.c
+ *
+ * Author: Abdullah Maher
+ *
+ * Description :
+ *
+ * Created on: Aug 8, 2023
+ ***********************************************************************************************/
+#include"rtos_fifo.h"
+
+
+
+/*
+ * Description : Function to Initializing my FIFO
+ * */
+FIFO_status FIFO_init(FIFO_t *FIFO_buff, DATA_TYPE_t *buff, uint32_t length)
+{
+	if(buff == NULL_PTR)
+	{
+		return 	FIFO_NULL;
+	}
+
+	FIFO_buff->base = buff;
+	FIFO_buff->head = buff;
+	FIFO_buff->tail = buff;
+	FIFO_buff->length = length;
+	FIFO_buff->count = 0;
+
+
+	return FIFO_NO_ERROR;
+}
+
+
+/*
+ * Description : Function To Add Element in FIFO
+ * */
+FIFO_status FIFO_enFIFO(FIFO_t *FIFO_buff, DATA_TYPE_t item)
+{
+	if(!(FIFO_buff->base) || !(FIFO_buff->head) || !(FIFO_buff->tail))
+	{
+		return 	FIFO_NULL;
+	}
+
+	if(FIFO_buff->count == FIFO_buff->length)
+	{
+		return FIFO_FULL;
+	}
+
+
+	*(FIFO_buff->head) = item;
+	FIFO_buff->count++;
+	if(FIFO_buff->head == (FIFO_buff->base + (FIFO_buff->length * sizeof(DATA_TYPE_t))))
+	{
+		FIFO_buff->head = FIFO_buff->base;
+	}
+	else
+	{
+		FIFO_buff->head++;
+	}
+
+	return FIFO_NO_ERROR;
+}
+
+
+/*
+ * Description : Function To Remove Element From FIFO
+ * */
+FIFO_status FIFO_deFIFO(FIFO_t *FIFO_buff, DATA_TYPE_t *item)
+{
+	if(!(FIFO_buff->base) || !(FIFO_buff->head) || !(FIFO_buff->tail))
+	{
+		return 	FIFO_NULL;
+	}
+
+	if(FIFO_buff->count == 0)
+	{
+		return FIFO_EMPTY;
+	}
+
+
+	*item = *(FIFO_buff->tail);
+	FIFO_buff->count--;
+	if(FIFO_buff->tail == (FIFO_buff->base + (FIFO_buff->length * sizeof(DATA_TYPE_t))))
+	{
+		FIFO_buff->tail = FIFO_buff->base;
+	}
+	else
+	{
+		FIFO_buff->tail++;
+	}
+
+
+	return FIFO_NO_ERROR;
+}
+
+/*
+ * Description : Function To Print FIFO
+ * */
+void FIFO_print(FIFO_t *FIFO_buff)
+{
+	DATA_TYPE_t *temp; uint32_t i;
+
+	if(FIFO_buff->count == 0)
+	{
+		printf("FIFO IS EMPTY\n");
+	}else
+	{
+		temp = FIFO_buff->tail;
+		printf("====Printing The FIFO====\n");
+		for(i = 0; i < FIFO_buff->count; i++,temp++)
+		{
+			printf("%x\n",*temp);
+		}
+		printf("==============");
+	}
+}

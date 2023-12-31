@@ -1,0 +1,72 @@
+/*============================================================================================
+ * Module : RTOS FIFO
+ *
+ * File Name : FIFO.h
+ *
+ * Author: Abdullah Maher
+ *
+ * Description :
+ *
+ * Created on: Aug 8, 2023
+ =============================================================================================*/
+#ifndef INC_RTOS_FIFO_H_
+#define INC_RTOS_FIFO_H_
+
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+
+#include"std_types.h"
+
+/*******************************************Configuration******************************************/
+
+/* Selecting The Data Type */
+#define DATA_TYPE_t uint32_t
+
+
+/*******************************************Type Definition******************************************/
+typedef struct{
+	DATA_TYPE_t length;
+	DATA_TYPE_t count;
+	DATA_TYPE_t *base;
+	DATA_TYPE_t *head;
+	DATA_TYPE_t *tail;
+}FIFO_buff_t;
+
+typedef enum{
+	FIFO_NO_ERROR,FIFO_FULL,FIFO_EMPTY,FIFO_NULL
+}FIFO_status;
+
+/*===============================================================================
+ *                                	   APIs 		   		                     *
+ ================================================================================*/
+
+/**===============================================================================
+ * Function Name  : FIFO_init.
+ * Brief          : Function to Initializing My FIFO.
+ * Parameter (in) : Pointer To My FIFO .
+ * Parameter (in) : Pointer To The Buffer.
+ * Parameter (in) : Length Of The FIFO Buffer.
+ * Return         : FIFO Status.
+ * Note           : None.																*/
+FIFO_status FIFO_init(FIFO_buff_t *FIFO_buff, DATA_TYPE_t *buff, uint32_t length);
+
+/*
+ * Description : Function to Add Data in FIFO
+ * */
+FIFO_status FIFO_enqueue(FIFO_buff_t *FIFO_buff, DATA_TYPE_t item);
+
+
+/*
+ * Description : Function to Remove Data from FIFO
+ * */
+FIFO_status FIFO_dequeue(FIFO_buff_t *FIFO_buff, DATA_TYPE_t *item);
+
+/*
+ * Description : Function to Print my FIFO
+ * */
+void FIFO_print(FIFO_buff_t *FIFO_buff);
+
+
+#endif /* INC_RTOS_FIFO_H_ */

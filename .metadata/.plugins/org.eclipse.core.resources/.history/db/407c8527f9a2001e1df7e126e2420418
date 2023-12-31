@@ -1,0 +1,13 @@
+/*
+ * cortex_mx_os_porting.h
+ *
+ *  Created on: Dec 25, 2023
+ *      Author: Abdullah
+ */
+
+#ifndef INC_CORTEX_MX_OS_PORTING_H_
+#define INC_CORTEX_MX_OS_PORTING_H_
+
+
+
+#endif /* INC_CORTEX_MX_OS_PORTING_H_ */

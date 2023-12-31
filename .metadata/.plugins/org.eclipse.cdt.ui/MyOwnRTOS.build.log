@@ -1,0 +1,10 @@
+16:35:45 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3332	      8	   2536	   5876	   16f4	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+
+16:35:47 Build Finished. 0 errors, 0 warnings. (took 2s.381ms)
+

@@ -1,0 +1,88 @@
+/*============================================================================================
+ * Module : Scheduler
+ *
+ * File Name : scheduler.h
+ *
+ * Author: Abdullah Maher
+ *
+ * Description : Scheduler
+ *
+ * Created on: Sep 1, 2023
+ =============================================================================================*/
+#ifndef INC_SCHEDULER_H_
+#define INC_SCHEDULER_H_
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+
+#include "cortex_mx_os_porting.h"
+
+/*===============================================================================
+ *                             Type Definitions     	                         *
+ ================================================================================*/
+typedef enum
+{
+	NO_ERROR,READY_FIFO_INIT_ERROR
+}RTOS_ERORR_STATE;
+
+typedef enum
+{
+	DISABLED,ENABLED
+}BLOCKING_STATE;
+
+typedef struct
+{
+	BLOCKING_STATE Task_Bloking;
+	uint32_t Task_WaitingTicsCount;
+
+}TASK_WAITING_TIME;
+
+typedef enum
+{
+	SUSPENDED,
+	WAITING,
+	READY,
+	RUNNING
+}TASK_STATE;
+
+typedef struct
+{
+	uint8_t Task_Name[30];
+	uint32_t Task_StackSize;
+	uint8_t Task_Priority;
+	void(*p_Task_Entery)(void);
+	uint32_t Task_S_PSP;
+	uint32_t Task_E_PSP;
+	uint32_t* Task_Current_PSP;
+	TASK_STATE Task_CurrentState;
+	TASK_WAITING_TIME Task_WaitingTime;
+}TASK_REF;
+/*===============================================================================
+ *               			          Macros 			                         *
+ ================================================================================*/
+#define MAX_NO_OF_TASKS					100
+
+#define MSP_SIZE						3072
+
+/*===============================================================================
+ *                                	   APIs 		   		                     *
+ ================================================================================*/
+
+/**===============================================================================
+ * Function Name  : MYRTOS_Init.
+ * Brief          : Function To Initialize The RTOS.
+ * Parameter (in) : None.
+ * Return         : Error State.
+ * Note           : None																*/
+RTOS_ERORR_STATE MYRTOS_Init(void);
+
+/**===============================================================================
+ * Function Name  : MYRTOS_Init.
+ * Brief          : Function To Initialize The RTOS.
+ * Parameter (in) : None.
+ * Return         : Erorr State.
+ * Note           : None																*/
+RTOS_ERORR_STATE MYRTOS_CreateTask(TASK_REF* task);
+
+#endif /* INC_SCHEDULER_H_ */

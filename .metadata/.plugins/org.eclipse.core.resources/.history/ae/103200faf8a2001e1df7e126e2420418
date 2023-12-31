@@ -1,0 +1,13 @@
+/*
+ * RTOS_fifo.h
+ *
+ *  Created on: Dec 25, 2023
+ *      Author: Abdullah
+ */
+
+#ifndef INC_RTOS_FIFO_H_
+#define INC_RTOS_FIFO_H_
+
+
+
+#endif /* INC_RTOS_FIFO_H_ */

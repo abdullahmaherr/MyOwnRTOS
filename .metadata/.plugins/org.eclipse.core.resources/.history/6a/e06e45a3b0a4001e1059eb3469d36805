@@ -1,0 +1,79 @@
+/*============================================================================================
+ * Module : RTOS FIFO
+ *
+ * File Name : FIFO.h
+ *
+ * Author: Abdullah Maher
+ *
+ * Description :
+ *
+ * Created on: Aug 8, 2023
+ =============================================================================================*/
+#ifndef INC_RTOS_FIFO_H_
+#define INC_RTOS_FIFO_H_
+
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+
+#include"std_types.h"
+
+/*===============================================================================
+ *              		          Configuration 		                         *
+ ================================================================================*/
+
+/* Selecting The Data Type */
+#define DATA_TYPE_t uint32_t
+
+
+/*===============================================================================
+ *                            Data Type Definitions                              *
+ ================================================================================*/
+typedef struct{
+	DATA_TYPE_t length;
+	DATA_TYPE_t count;
+	DATA_TYPE_t *base;
+	DATA_TYPE_t *head;
+	DATA_TYPE_t *tail;
+}FIFO_t;
+
+typedef enum{
+	FIFO_NO_ERROR,FIFO_FULL,FIFO_EMPTY,FIFO_NULL
+}FIFO_status;
+
+/*===============================================================================
+ *                                	   APIs 		   		                     *
+ ================================================================================*/
+
+/**===============================================================================
+ * Function Name  : FIFO_init.
+ * Brief          : Function to Initializing FIFO.
+ * Parameter (in) : Pointer To The FIFO.
+ * Parameter (in) : Pointer To The Buffer.
+ * Parameter (in) : Length Of The FIFO Buffer.
+ * Return         : FIFO Status.
+ * Note           : None.																*/
+FIFO_status FIFO_init(FIFO_t *fifo, DATA_TYPE_t *buff, uint32_t length);
+
+/**===============================================================================
+ * Function Name  : FIFO_enqueue.
+ * Brief          : Function to Add Element in FIFO.
+ * Parameter (in) : Pointer To The FIFO.
+ * Parameter (in) : Element To Be Enqueue To The FIFO.
+ * Return         : FIFO Status.
+ * Note           : None.																*/
+FIFO_status FIFO_enqueue(FIFO_t *fifo, DATA_TYPE_t item);
+
+/**===============================================================================
+ * Function Name  : FIFO_enqueue.
+ * Brief          : Function to Remove Element From FIFO.
+ * Parameter (in) : Pointer To The FIFO.
+ * Parameter (in) : Pointer To Element To Be Dequeue From FIFO.
+ * Return         : FIFO Status.
+ * Note           : None.																*/
+FIFO_status FIFO_dequeue(FIFO_t *fifo, DATA_TYPE_t *item);
+
+
+
+#endif /* INC_RTOS_FIFO_H_ */

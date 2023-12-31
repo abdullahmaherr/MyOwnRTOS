@@ -1,0 +1,89 @@
+/*============================================================================================
+ * Module : Porting File
+ *
+ * File Name : cortex_mx_os_porting.c
+ *
+ * Author: Abdullah Maher
+ *
+ * Description :
+ *
+ * Created on: Sep 1, 2023
+ =============================================================================================*/
+
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+#include "cortex_mx_os_porting.h"
+#include "stm32f103c8_rcc_driver.h"
+/*===============================================================================
+ *     		       		 	Exception Handlers Definition 	                     *
+ ================================================================================*/
+void SysTick_Handler(void)
+{
+	/* Decide What Next */
+	//Dispatch_Next_Task();
+
+	/* Trigger PendSV */
+	Trigger_PendSV();
+}
+
+__attribute((naked)) void PendSV_Handler(void)
+{
+	__asm volatile(	"MRSNE R0,PSP	\n\t"
+					"B PendSV_ContextSwitch"
+			);
+}
+
+__attribute((naked)) void SVC_Handler(void)
+{
+	__asm volatile(	"TST LR, #4		\n\t"
+					"ITE EQ			\n\t"
+					"MRSEQ R0,MSP	\n\t"
+					"MRSNE R0,PSP	\n\t"
+					"B SVC_services"
+	);
+}
+
+void HardFault_Handler(void)
+{
+	while(1);
+}
+
+void MemManage_Handler(void)
+{
+	while(1);
+}
+
+void BusFault_Handler(void)
+{
+	while(1);
+}
+
+void UsageFault_Handler(void)
+{
+	while(1);
+}
+
+
+/*===============================================================================
+ *                              API Definitions                                  *
+ ================================================================================*/
+
+void MyRTOS_HW_Init(void)
+{
+	/* Initialize RCC (SysTick Timer & CPU) */
+
+	/* Initialize System Clock  */
+	MCAL_RCC_initSYSClk();
+
+	/* Initialize PendSV Priority */
+	__NVIC_SetPriority(PendSV_IRQn, 80);
+
+}
+
+void MyRTOS_StartTicker(void)
+{
+	/* For F = 8 Mh , T = 0.125 us , 1s -> 8000 Ticks */
+	SysTick_Config(8000);
+}

@@ -1,0 +1,72 @@
+/*============================================================================================
+ * Module : Porting File
+ *
+ * File Name : cortex_mx_os_porting.c
+ *
+ * Author: Abdullah Maher
+ *
+ * Description :
+ *
+ * Created on: Sep 1, 2023
+ =============================================================================================*/
+
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+#include "cortex_mx_os_porting.h"
+
+/*===============================================================================
+ *     		       		 	Exception Handlers Definition 	                     *
+ ================================================================================*/
+
+void SysTick_Handler(void)
+{
+	
+}
+
+void PendSV_Handler(void)
+{
+	
+}
+
+__attribute((naked)) void SVC_Handler(void)
+{
+	__asm(	"TST LR, #4		\n\t"
+			"ITE EQ			\n\t"
+			"MRSEQ R0,MSP	\n\t"
+			"MRSNE R0,MSP	\n\t"
+			"B OS_SVC_services"
+			);
+}
+
+void HardFault_Handler(void)
+{
+	while(1);
+}
+
+void MemManage_Handler(void)
+{
+	while(1);
+}
+
+void BusFault_Handler(void)
+{
+	while(1);
+}
+
+void UsageFault_Handler(void)
+{
+	while(1);
+}
+
+
+
+
+
+void OS_HW_Init(void)
+{
+	/* Initialize RCC (SysTick Timer & CPU) */
+	
+	
+}

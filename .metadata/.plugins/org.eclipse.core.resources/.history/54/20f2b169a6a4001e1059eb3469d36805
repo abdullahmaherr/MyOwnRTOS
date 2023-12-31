@@ -1,0 +1,17 @@
+/*============================================================================================
+ * Module : RTOS FIFO
+ *
+ * File Name : rtos_fifo.h
+ *
+ * Author: Abdullah Maher
+ *
+ * Description :
+ *
+ * Created on: Sep 1, 2023
+ =============================================================================================*/
+#ifndef INC_RTOS_FIFO_H_
+#define INC_RTOS_FIFO_H_
+
+
+
+#endif /* INC_RTOS_FIFO_H_ */

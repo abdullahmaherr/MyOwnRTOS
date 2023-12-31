@@ -1,0 +1,4 @@
+rtos_fifo.c:27:12:FIFO_init	24	static
+rtos_fifo.c:50:12:FIFO_enqueue	16	static
+rtos_fifo.c:85:12:FIFO_dequeue	16	static
+rtos_fifo.c:117:12:FIFO_IsFull	16	static

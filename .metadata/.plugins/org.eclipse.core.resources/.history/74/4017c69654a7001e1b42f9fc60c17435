@@ -1,0 +1,72 @@
+/*============================================================================================
+ * Module : Porting File
+ *
+ * File Name : cortex_mx_os_porting.h
+ *
+ * Author: Abdullah Maher
+ *
+ * Description :
+ *
+ * Created on: Sep 1, 2023
+ =============================================================================================*/
+#ifndef INC_CORTEX_MX_OS_PORTING_H_
+#define INC_CORTEX_MX_OS_PORTING_H_
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+#include "ARMCM3.h"
+
+/*===============================================================================
+ *                              Global Variables                                 *
+ ================================================================================*/
+
+extern uint32_t _estack;
+
+/*===============================================================================
+ *           		   				 Macros				 	 		             *
+ ================================================================================*/
+
+/* SP -> MSP */
+#define SET_SP_TO_MSP()					__asm volatile("MRS R0, CONTROL \n\t 	MOV R1,#0x05 \n\t 	AND R0,R0,R1 \n\t 	MSR CONTROL,R0")
+/* SP -> PSP */
+#define SET_SP_TO_PSP()					__asm volatile("MRS R0, CONTROL \n\t 	MOV R1,#0x02 \n\t 	ORR R0,R0,R1 \n\t 	MSR CONTROL,R0")
+
+/* Set Access Level To Unprivileged (Set BIT 0 in CONTROL Register) */
+#define UNPRIVILEGED_ACCESS_LEVEL()		__asm volatile("MRS R0, CONTROL \n\t 	MOV R1,#0x01 \n\t 	ORR R0,R0,R1 \n\t 	MSR CONTROL,R0")
+/* Set Access Level To Privileged (Clear BIT 0 in CONTROL Register) */
+#define PRIVILEGED_ACCESS_LEVEL()		__asm volatile("MRS R0, CONTROL \n\t 	MOV R1,#0x06 \n\t 	AND R0,R0,R1 \n\t 	MSR CONTROL,R0")
+
+/* Set PSP With Address */
+#define SET_PSP(ADDRESS)				__asm volatile("MOV R0,%[in0] \n\t MSR PSP,R0" : :[in0] "r" (ADDRESS))
+/* Return Address Of PSP */
+#define GET_PSP(ADDRESS)				__asm volatile("MRS R0,PSP \n\t MOV %[in0],R0" : [in0] "=r" (ADDRESS))
+
+/* Call SVC */
+#define SVC_SET(SERVICE_NUMBER)			__asm volatile("SVC %[in0]" : :[in0] "i" (SERVICE_NUMBER))
+
+/* Trigger PendCV */
+#define Trigger_PendCV()				(SCB->ICSR)|=(1<<SCB_ICSR_PENDSVSET_Msk)
+
+/* No Operation */
+#define NO_OPERATION()					__asm volatile("NOP")
+/*===============================================================================
+ *                                	   APIs 		   		                     *
+ ================================================================================*/
+
+/**===============================================================================
+ * Function Name  : MyRTOS_HW_Init.
+ * Brief          : Function To Initialize The Hardware.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void MyRTOS_HW_Init(void);
+/**===============================================================================
+ * Function Name  : MyRTOS_StartTicker.
+ * Brief          : Function To Start The SysTick.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void MyRTOS_StartTicker(void);
+
+#endif /* INC_CORTEX_MX_OS_PORTING_H_ */

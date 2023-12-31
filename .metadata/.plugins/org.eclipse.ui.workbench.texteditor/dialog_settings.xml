@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="MYRTOS_ActivateTask"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="MYRTOS_ActivateTask"/>
+			<item value="OS_Control.Current_Task-&gt;Current_PSP"/>
+			<item value="Task_CurrentState"/>
+			<item value="IDLE"/>
+			<item value="RTOS_CurrenState"/>
+			<item value="Ready_fifo_buff"/>
+			<item value="Ready_fifo"/>
+			<item value="MYRTOS_data"/>
+			<item value="data"/>
+			<item value="MYRTOS_config"/>
+			<item value="ERORR"/>
+			<item value="_eheap"/>
+			<item value="eheap"/>
+			<item value="uin"/>
+			<item value="FIFO_buff"/>
+		</list>
+		<list key="replacehistory">
+			<item value="MYRTOS_TCB.Current_Task-&gt;Task_Current_PSP"/>
+			<item value="Task_State"/>
+			<item value="RTOS_CurrentState"/>
+			<item value="Ready_Queue_Buff"/>
+			<item value="Ready_Queue"/>
+			<item value="MYRTOS_TCB"/>
+			<item value="MYRTOS_data"/>
+			<item value="ERROR"/>
+			<item value="fifo"/>
+			<item value="FIFO"/>
+			<item value="FIFO_t"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="703"/>
+		<item key="DIALOG_Y_ORIGIN" value="130"/>
+		<item key="DIALOG_WIDTH" value="284"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

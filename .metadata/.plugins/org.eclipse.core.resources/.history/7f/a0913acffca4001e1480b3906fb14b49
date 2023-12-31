@@ -1,0 +1,60 @@
+/*============================================================================================
+ * Module : Scheduler
+ *
+ * File Name : scheduler.h
+ *
+ * Author: Abdullah Maher
+ *
+ * Description : Scheduler
+ *
+ * Created on: Sep 1, 2023
+ =============================================================================================*/
+#ifndef INC_SCHEDULER_H_
+#define INC_SCHEDULER_H_
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+
+#include "cortex_mx_os_porting.h"
+
+/*===============================================================================
+ *                            User Type Definitions                              *
+ ================================================================================*/
+typedef enum
+{
+	SUSPENDED,
+	WAITING,
+	READY,
+	RUNNING
+}TASK_STATE;
+typedef struct
+{
+	uint8_t TASK_Name[30];
+	uint32_t TASK_StackSize;
+	uint8_t TASK_Priority;
+	void(*p_TASK_Entery)(void);
+	uint32_t TASK_S_PSP;
+	uint32_t TASK_E_PSP;
+	uint32_t *TASK_CurrentPSP;
+}TASK_REF;
+/*===============================================================================
+ *                       Macros Configuration References                         *
+ ================================================================================*/
+
+
+
+/*===============================================================================
+ *                                	   APIs 		   		                     *
+ ================================================================================*/
+
+/**===============================================================================
+ * Function Name  : MYRTOS_Init.
+ * Brief          : Function To Initialize The RTOS.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void MYRTOS_Init(void);
+
+
+#endif /* INC_SCHEDULER_H_ */
