@@ -61,7 +61,7 @@ TASK_REF* Ready_Queue_Buff[MAX_NO_OF_TASKS];
 
 /* IDLE Task */
 TASK_REF idle_task;
-uint8_t IdleTask_Led;
+uint8_t IdleTask_Led,SysTick_Led;
 
 
 /*===============================================================================
@@ -117,17 +117,36 @@ void Bubble_Sort(void);
 void Dispatch_Next_Task(void);
 
 /**===============================================================================
- * Function Name  : PendSV_CS.
+ * Function Name  : PendSV_ContextSwitch.
  * Brief          : Function To Context Switching Between Tasks in PendSV Handler.
  * Parameter (in) : Pointer To Current Task Stack.
  * Return         : None.
  * Note           : None																*/
 void PendSV_ContextSwitch(uint32_t* p_CurrentPSP);
 
+/**===============================================================================
+ * Function Name  : SysTick_ISR.
+ * Brief          : Handler of SysTick.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void SysTick_ISR(void);
+
 
 /*===============================================================================
  *                        Private Functions Definitions  		   	             *
  ================================================================================*/
+void SysTick_ISR(void)
+{
+	SysTick_Led ^= 1;
+
+	/* Decide What Next */
+	Dispatch_Next_Task();
+
+	/* Trigger PendSV */
+	Trigger_PendSV();
+}
+
 void PendSV_ContextSwitch(uint32_t* p_CurrentPSP)
 {
 	/* Get PSP Address */
@@ -137,21 +156,21 @@ void PendSV_ContextSwitch(uint32_t* p_CurrentPSP)
 
 	/* PUSH R4 To R11 of Current Task */
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
-	__asm volatile("MOV %[out0] ,R4" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	__asm volatile("MOV %[out0],R4" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
-	__asm volatile("MOV %[out0] ,R5" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	__asm volatile("MOV %[out0],R5" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
-	__asm volatile("MOV %[out0] ,R6" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	__asm volatile("MOV %[out0],R6" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
-	__asm volatile("MOV %[out0] ,R7" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	__asm volatile("MOV %[out0],R7" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
-	__asm volatile("MOV %[out0] ,R8" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	__asm volatile("MOV %[out0],R8" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
-	__asm volatile("MOV %[out0] ,R9" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	__asm volatile("MOV %[out0],R9" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
-	__asm volatile("MOV %[out0] ,R10" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	__asm volatile("MOV %[out0],R10" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
-	__asm volatile("MOV %[out0] ,R11" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	__asm volatile("MOV %[out0],R11" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 
 
 	/* Switch To Next Task */
@@ -163,7 +182,7 @@ void PendSV_ContextSwitch(uint32_t* p_CurrentPSP)
 
 
 	/* Context Restore */
-	
+
 	/* POP R11 To R4 of Next Task */
 	__asm volatile("MOV R11,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
 	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
@@ -294,7 +313,7 @@ void Create_Task_Stack(TASK_REF* task)
 	/* Create Stack Frame */		/* Pushed By CPU : XPSR, PC, LR, R12, R3, R2, R1, R0
 	  	  	  	  	  	  	  	  	   Pushed By Code : R4, R5, R6, R7, R9,R11				*/
 	(task->Task_Current_PSP)--;
-	*(task->Task_Current_PSP) = 0x10000000; /* Push Dummy xPSR to Stack , Bit-24 Is Set Due To thumb */
+	*(task->Task_Current_PSP) = 0x01000000; /* Push Dummy xPSR to Stack , Bit-24 Is Set Due To thumb */
 
 	(task->Task_Current_PSP)--;
 	*(task->Task_Current_PSP) = (uint32_t) task->p_Task_Entery; /* Push PC to Stack */
@@ -312,7 +331,7 @@ void Create_Task_Stack(TASK_REF* task)
 
 void Update_Scheduler(void)
 {
-	uint8_t i;
+	uint8_t i = 0;
 	TASK_REF* temp = NULL;
 	TASK_REF* p_task;
 	TASK_REF* p_nexttask;
@@ -408,8 +427,8 @@ RTOS_ERROR_STATE MYRTOS_Init(void)
 
 	/* Set Idle Task */
 	strcpy(idle_task.Task_Name,"IDLE_TASK");
-	idle_task.Task_StackSize = 300;
-	idle_task.Task_Priority = 255;
+	idle_task.Task_StackSize = 256;
+	idle_task.Task_Priority = 100;
 	idle_task.p_Task_Entery = IDLE_Task;
 
 	MYRTOS_CreateTask(&idle_task);
@@ -420,6 +439,8 @@ RTOS_ERROR_STATE MYRTOS_Init(void)
 
 RTOS_ERROR_STATE MYRTOS_StartRTOS(void)
 {
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
 	/* Update RTOS State */
 	MYRTOS_TCB.RTOS_CurrentState = RTOS_RUNNING;
 
@@ -427,7 +448,7 @@ RTOS_ERROR_STATE MYRTOS_StartRTOS(void)
 	MYRTOS_TCB.Current_Task = &idle_task;
 
 	/* Activate Current Task */
-	MYRTOS_ActivateTask(MYRTOS_TCB.Current_Task);
+	error_state += MYRTOS_ActivateTask(MYRTOS_TCB.Current_Task);
 
 	/* Start The Ticker */
 	MyRTOS_StartTicker();
@@ -443,6 +464,8 @@ RTOS_ERROR_STATE MYRTOS_StartRTOS(void)
 
 	/* Set Task Entry */
 	MYRTOS_TCB.Current_Task->p_Task_Entery();
+
+	return error_state;
 }
 
 
@@ -457,14 +480,14 @@ RTOS_ERROR_STATE MYRTOS_CreateTask(TASK_REF* task)
 	/* Set PSP Locator, ALIGN(8)  */
 	MYRTOS_TCB.PSP_Locator = task->Task_E_PSP - 8;
 
-	//	/* Check Boundaries Of Stack */
+	//	/* Check Boundaries of Stack */
 	//	if(task->Task_E_PSP < ((uint32_t)&_eheap))
 	//		return TASK_EXCEED_STACK_BAOUNDARIES;
 
 	/* Create Stack of Task */
 	Create_Task_Stack(task);
 
-	/* Assign Task To Task List */
+	/* Assign Task To TCB */
 	MYRTOS_TCB.Task[MYRTOS_TCB.Number_Of_Active_Tasks] = task;
 	(MYRTOS_TCB.Number_Of_Active_Tasks)++;
 

@@ -59,7 +59,7 @@ void Task3_Fun(void)
 {
 	while(1)
 	{
-		Task1_Led ^= 1;
+		Task3_Led ^= 1;
 	}
 }
 
@@ -75,13 +75,13 @@ void Task1_Fun(void)
 {
 	while(1)
 	{
-		Task3_Led ^= 1;
+		Task1_Led ^= 1;
 	}
 }
 
 void System_Init(void)
 {	
-	
+
 	/* Initialize HardWare */
 	MyRTOS_HW_Init();
 
@@ -91,22 +91,30 @@ void System_Init(void)
 	/* Initialize The Tasks */
 
 	strcpy(task1.Task_Name,"TASK_1");
-	task1.Task_StackSize = 300;
+	task1.Task_StackSize = 512;
 	task1.Task_Priority = 1;
 	task1.p_Task_Entery = Task1_Fun;
 	MYRTOS_CreateTask(&task1);
 
 	strcpy(task2.Task_Name,"TASK_2");
-	task2.Task_StackSize = 400;
-	task2.Task_Priority = 2;
+	task2.Task_StackSize = 512;
+	task2.Task_Priority = 1;
 	task2.p_Task_Entery = Task2_Fun;
 	MYRTOS_CreateTask(&task2);
 
 	strcpy(task3.Task_Name,"TASK_3");
-	task3.Task_StackSize = 500;
-	task3.Task_Priority = 3;
+	task3.Task_StackSize = 512;
+	task3.Task_Priority = 1;
 	task3.p_Task_Entery = Task3_Fun;
 	MYRTOS_CreateTask(&task3);
+
+	MYRTOS_ActivateTask(&task1);
+	MYRTOS_ActivateTask(&task2);
+	MYRTOS_ActivateTask(&task3);
+
+
+
+	MYRTOS_StartRTOS();
 
 }
 

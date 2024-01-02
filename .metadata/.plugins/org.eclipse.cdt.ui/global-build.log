@@ -3163,3 +3163,521 @@ arm-none-eabi-size   MyOwnRTOS.axf
    3332	      8	   2536	   5876	   16f4	MyOwnRTOS.axf
 Finished building: default.size.stdout
  
+18:16:17 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:410:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../MyRTOS/scheduler.c: In function 'MYRTOS_StartRTOS':
+../MyRTOS/scheduler.c:446:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:93:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:99:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:105:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../MyRTOS/cortex_mx_os_porting.c: In function 'SysTick_Handler':
+../MyRTOS/cortex_mx_os_porting.c:34:2: warning: implicit declaration of function 'Dispatch_Next_Task' [-Wimplicit-function-declaration]
+  Dispatch_Next_Task();
+  ^~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3648	      8	   2752	   6408	   1908	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+18:18:02 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/rtos_fifo.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/rtos_fifo.d" -MT"MyRTOS/rtos_fifo.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/rtos_fifo.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MyRTOS/cortex_mx_os_porting.o: In function `SysTick_Handler':
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Debug/../MyRTOS/cortex_mx_os_porting.c:30: undefined reference to `SysTick_ISR'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:56: MyOwnRTOS.axf] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:19:44 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MyRTOS/cortex_mx_os_porting.o: In function `SysTick_Handler':
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Debug/../MyRTOS/cortex_mx_os_porting.c:30: undefined reference to `SysTick_ISR'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:56: MyOwnRTOS.axf] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:20:12 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MyRTOS/cortex_mx_os_porting.o: In function `SysTick_Handler':
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Debug/../MyRTOS/cortex_mx_os_porting.c:30: undefined reference to `SysTick_ISR'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:56: MyOwnRTOS.axf] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:21:05 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3604	      8	   2752	   6364	   18dc	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:21:22 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MyRTOS/cortex_mx_os_porting.o: In function `SysTick_Handler':
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Debug/../MyRTOS/cortex_mx_os_porting.c:30: undefined reference to `SysTick_ISR'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:56: MyOwnRTOS.axf] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:22:10 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MyRTOS/cortex_mx_os_porting.o: In function `SysTick_Handler':
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Debug/../MyRTOS/cortex_mx_os_porting.c:30: undefined reference to `SysTick_ISR'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:56: MyOwnRTOS.axf] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:22:21 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MyRTOS/cortex_mx_os_porting.o: In function `SysTick_Handler':
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Debug/../MyRTOS/cortex_mx_os_porting.c:30: undefined reference to `SysTick_ISR'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:56: MyOwnRTOS.axf] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:25:44 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MyRTOS/cortex_mx_os_porting.o: In function `SysTick_Handler':
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Debug/../MyRTOS/cortex_mx_os_porting.c:30: undefined reference to `SysTick_ISR'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:56: MyOwnRTOS.axf] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:26:17 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MyRTOS/cortex_mx_os_porting.o: In function `SysTick_Handler':
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Debug/../MyRTOS/cortex_mx_os_porting.c:30: undefined reference to `SysTick_ISR'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:56: MyOwnRTOS.axf] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:26:48 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3656	      8	   2752	   6416	   1910	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:26:57 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3656	      8	   2752	   6416	   1910	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+18:30:15 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:93:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:99:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:105:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3904	      8	   2752	   6664	   1a08	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:31:12 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:93:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:99:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:105:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2752	   6684	   1a1c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:38:12 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:93:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:99:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:105:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2752	   6684	   1a1c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+18:41:11 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:93:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:99:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:105:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2752	   6684	   1a1c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.list
+Finished building: MyOwnRTOS.bin
+ 
+ 
