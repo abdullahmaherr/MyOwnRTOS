@@ -33,9 +33,7 @@ __attribute((naked)) void SysTick_Handler(void)
 
 __attribute((naked)) void PendSV_Handler(void)
 {
-	__asm volatile(	"MRS R0,PSP	\n\t"
-					"B PendSV_ContextSwitch"
-			);
+	__asm volatile( "B PendSV_ContextSwitch" );
 }
 
 __attribute((naked)) void SVC_Handler(void)

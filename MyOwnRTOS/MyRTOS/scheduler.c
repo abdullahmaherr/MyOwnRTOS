@@ -119,26 +119,66 @@ void Dispatch_Next_Task(void);
 /**===============================================================================
  * Function Name  : PendSV_ContextSwitch.
  * Brief          : Function To Context Switching Between Tasks in PendSV Handler.
- * Parameter (in) : Pointer To Current Task Stack.
+ * Parameter (in) : None.
  * Return         : None.
- * Note           : None																*/
-void PendSV_ContextSwitch(uint32_t* p_CurrentPSP);
+ * Note           : None.																*/
+void PendSV_ContextSwitch(void);
 
 /**===============================================================================
  * Function Name  : SysTick_ISR.
  * Brief          : Handler of SysTick.
  * Parameter (in) : None.
  * Return         : None.
- * Note           : None																*/
+ * Note           : None.																*/
 void SysTick_ISR(void);
+
+/**===============================================================================
+ * Function Name  : Update_Waiting_Time.
+ * Brief          : Function To Update Blocking Time of Task.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None.																*/
+void Update_Waiting_Time(void);
 
 
 /*===============================================================================
  *                        Private Functions Definitions  		   	             *
  ================================================================================*/
+
+void Update_Waiting_Time(void)
+{
+	uint32_t i;
+
+	/* For Every Ticks Count Decrement The Blocking Ticks Count For The Blocked Tasks */
+	for(i = 0; i < MYRTOS_TCB.Number_Of_Active_Tasks; i++)
+	{
+		if(MYRTOS_TCB.Task[i]->Task_State == SUSPEND)
+		{
+			if(MYRTOS_TCB.Task[i]->Task_WaitingTime.Task_Bloking == BLOCKING_ENABLED)
+			{
+				/* Decrement The Blocking Ticks Count */
+				(MYRTOS_TCB.Task[i]->Task_WaitingTime.Task_WaitingTicsCount)--;
+
+				if(MYRTOS_TCB.Task[i]->Task_WaitingTime.Task_WaitingTicsCount == 0)
+				{
+					/* Disable The Blocking of The Task */
+					MYRTOS_TCB.Task[i]->Task_WaitingTime.Task_Bloking = BLOCKING_DISABLED;
+					MYRTOS_TCB.Task[i]->Task_State = WAITING;
+
+					SVC_SET(TASK_WAITING);
+				}
+			}
+
+		}
+	}
+}
+
 void SysTick_ISR(void)
 {
 	SysTick_Led ^= 1;
+
+	/* Update Blocking Ticks Count For Blocked Tasks */
+	Update_Waiting_Time();
 
 	/* Decide What Next */
 	Dispatch_Next_Task();
@@ -147,10 +187,10 @@ void SysTick_ISR(void)
 	Trigger_PendSV();
 }
 
-void PendSV_ContextSwitch(uint32_t* p_CurrentPSP)
+__attribute((naked)) void PendSV_ContextSwitch(void)
 {
 	/* Get PSP Address */
-	MYRTOS_TCB.Current_Task->Task_Current_PSP = p_CurrentPSP;
+	GET_PSP(MYRTOS_TCB.Current_Task->Task_Current_PSP);
 
 	/* Context Switch */
 
@@ -271,10 +311,13 @@ void SVC_services(uint32_t* p_StackFrame)
 
 		}
 
+		break;
 
-		break;
 	case TASK_WAITING:
+		/* Update Scheduler */
+		Update_Scheduler();
 		break;
+
 	default:
 		break;
 	}
@@ -298,7 +341,7 @@ void IDLE_Task(void)
 	while(1)
 	{
 		IdleTask_Led ^= 1; 
-		NO_OPERATION();
+		WFE();
 	}
 }
 
@@ -311,20 +354,20 @@ void Create_Task_Stack(TASK_REF* task)
 	task->Task_Current_PSP = (uint32_t*) task->Task_S_PSP;
 
 	/* Create Stack Frame */		/* Pushed By CPU : XPSR, PC, LR, R12, R3, R2, R1, R0
-	  	  	  	  	  	  	  	  	   Pushed By Code : R4, R5, R6, R7, R9,R11				*/
+	  	  	  	  	  	  	  	  	   Pushed By Code : R4, R5, R6, R7, R9, R11				*/
 	(task->Task_Current_PSP)--;
 	*(task->Task_Current_PSP) = 0x01000000; /* Push Dummy xPSR to Stack , Bit-24 Is Set Due To thumb */
 
 	(task->Task_Current_PSP)--;
-	*(task->Task_Current_PSP) = (uint32_t) task->p_Task_Entery; /* Push PC to Stack */
+	*(task->Task_Current_PSP) = (uint32_t) task->p_Task_Entery; /* Push PC in Stack */
 
 	(task->Task_Current_PSP)--;
-	*(task->Task_Current_PSP) = 0xFFFFFFFD; /* Push LR to Stack */
+	*(task->Task_Current_PSP) = 0xFFFFFFFD; /* Push LR in Stack */
 
 	for(i = 0; i < 13; i++)
 	{
 		(task->Task_Current_PSP)--;
-		*(task->Task_Current_PSP) = 0x00000000; /* Push R0, R2, R3, ..., R12 to Stack */
+		*(task->Task_Current_PSP) = 0x00000000; /* Push R0, R2, R3, ..., R12 in Stack */
 	}
 
 }
@@ -521,6 +564,23 @@ RTOS_ERROR_STATE MYRTOS_TerminateTask(TASK_REF* task)
 	task->Task_State = SUSPEND;
 
 	/* Call SVC Exception */
+	SVC_SET(TERMINATE_TASK);
+
+	return error_state;
+}
+
+RTOS_ERROR_STATE MYRTOS_WaitTask(TASK_REF* task, uint32_t a_BlockTicks)
+{
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
+	/* Set Waiting Time and Task Blocking State */
+	task->Task_WaitingTime.Task_Bloking = BLOCKING_ENABLED;
+	task->Task_WaitingTime.Task_WaitingTicsCount = a_BlockTicks;
+
+	/* Set Task State */
+	task->Task_State = SUSPEND;
+
+	/* Terminate Task Temporary */
 	SVC_SET(TERMINATE_TASK);
 
 	return error_state;

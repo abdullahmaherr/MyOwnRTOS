@@ -44,8 +44,8 @@
  *                              Global Variables                                 *
  ================================================================================*/
 
-TASK_REF task1,task2,task3;
-uint8_t Task1_Led, Task2_Led, Task3_Led;
+TASK_REF task1,task2,task3,task4;
+uint8_t Task1_Led, Task2_Led, Task3_Led,Task4_Led;
 
 /*===============================================================================
  *     		       		 	ISR Functions Definition 		                     *
@@ -55,11 +55,28 @@ uint8_t Task1_Led, Task2_Led, Task3_Led;
 /*===============================================================================
  *                                Application                                    *
  ================================================================================*/
+//void Task4_Fun(void)
+//{
+//	static uint32_t count = 0;
+//	while(1)
+//	{
+//		Task4_Led ^= 1;
+//		count++;
+//
+//		if(count == 0xFFF)
+//		{
+//			MYRTOS_TerminateTask(&task4);
+//			count = 0;
+//		}
+//	}
+//}
+
 void Task3_Fun(void)
 {
 	while(1)
 	{
 		Task3_Led ^= 1;
+		MYRTOS_WaitTask(&task3, 100);
 	}
 }
 
@@ -68,6 +85,7 @@ void Task2_Fun(void)
 	while(1)
 	{
 		Task2_Led ^= 1;
+		MYRTOS_WaitTask(&task2, 300);
 	}
 }
 
@@ -76,6 +94,7 @@ void Task1_Fun(void)
 	while(1)
 	{
 		Task1_Led ^= 1;
+		MYRTOS_WaitTask(&task1, 500);
 	}
 }
 
@@ -91,22 +110,29 @@ void System_Init(void)
 	/* Initialize The Tasks */
 
 	strcpy(task1.Task_Name,"TASK_1");
-	task1.Task_StackSize = 512;
-	task1.Task_Priority = 1;
+	task1.Task_StackSize = 1024;
+	task1.Task_Priority = 3;
 	task1.p_Task_Entery = Task1_Fun;
 	MYRTOS_CreateTask(&task1);
 
 	strcpy(task2.Task_Name,"TASK_2");
-	task2.Task_StackSize = 512;
-	task2.Task_Priority = 1;
+	task2.Task_StackSize = 1024;
+	task2.Task_Priority = 3;
 	task2.p_Task_Entery = Task2_Fun;
 	MYRTOS_CreateTask(&task2);
 
 	strcpy(task3.Task_Name,"TASK_3");
-	task3.Task_StackSize = 512;
-	task3.Task_Priority = 1;
+	task3.Task_StackSize = 1024;
+	task3.Task_Priority = 3;
 	task3.p_Task_Entery = Task3_Fun;
 	MYRTOS_CreateTask(&task3);
+
+//	strcpy(task4.Task_Name,"TASK_4");
+//	task4.Task_StackSize = 512;
+//	task4.Task_Priority = 1;
+//	task4.p_Task_Entery = Task4_Fun;
+//	MYRTOS_CreateTask(&task4);
+
 
 	MYRTOS_ActivateTask(&task1);
 	MYRTOS_ActivateTask(&task2);

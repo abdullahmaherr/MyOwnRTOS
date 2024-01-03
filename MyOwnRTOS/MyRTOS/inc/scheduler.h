@@ -28,7 +28,7 @@ typedef enum
 
 typedef enum
 {
-	DISABLED,ENABLED
+	BLOCKING_DISABLED,BLOCKING_ENABLED
 }BLOCKING_STATE;
 
 typedef struct
@@ -109,5 +109,13 @@ RTOS_ERROR_STATE MYRTOS_ActivateTask(TASK_REF* task);
  * Note           : None																*/
 RTOS_ERROR_STATE MYRTOS_TerminateTask(TASK_REF* task);
 
+/**===============================================================================
+ * Function Name  : MYRTOS_WaitTask.
+ * Brief          : Function To Block Task For a Certain Time.
+ * Parameter (in) : Pointer To Task Reference.
+ * Parameter (in) : No. of Desired Blocked Ticks.
+ * Return         : Error State.
+ * Note           : None																*/
+RTOS_ERROR_STATE MYRTOS_WaitTask(TASK_REF* task, uint32_t a_BlockTicks);
 
 #endif /* INC_SCHEDULER_H_ */

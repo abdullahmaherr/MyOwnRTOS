@@ -52,6 +52,9 @@ extern uint32_t _estack;
 /* No Operation */
 #define NO_OPERATION()					__asm volatile("NOP")
 
+/* Wait For Event */
+#define WFE()							__asm volatile("WFE")
+
 /*===============================================================================
  *                                	   APIs 		   		                     *
  ================================================================================*/
