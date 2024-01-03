@@ -1,0 +1,606 @@
+/*============================================================================================
+ * Module : Scheduler
+ *
+ * File Name : scheduler.c
+ *
+ * Author: Abdullah Maher
+ *
+ * Description : Scheduler
+ *
+ * Created on: Sep 1, 2023
+ =============================================================================================*/
+
+/*===============================================================================
+ *                                Includes                                       *
+ ================================================================================*/
+#include <string.h>
+
+#include "scheduler.h"
+#include "rtos_fifo.h"
+
+/*===============================================================================
+ *                             Type Definitions     	                         *
+ ================================================================================*/
+typedef enum
+{
+	ACTIVATE_TASK,
+	TERMINATE_TASK,
+	TASK_WAITING
+}SVC_SERVICE_ID;
+
+typedef enum
+{
+	RTOS_SUSPEND,
+	RTOS_RUNNING
+
+}RTOS_STATE;
+
+typedef struct
+{
+	TASK_REF* Task[MAX_NO_OF_TASKS];
+	uint32_t _S_MSP;
+	uint32_t _E_MSP;
+	uint32_t PSP_Locator;
+	uint32_t Number_Of_Active_Tasks;
+	TASK_REF* Current_Task;
+	TASK_REF* Next_Task;
+	RTOS_STATE RTOS_CurrentState;
+}TASKS_CONTROL_BLOCK;
+
+
+/*===============================================================================
+ *                              Global Variables                                 *
+ ================================================================================*/
+
+/* MYRTOS Control Block Structure */
+static TASKS_CONTROL_BLOCK MYRTOS_TCB;
+
+/* Ready Queue */
+FIFO_t Ready_Queue;
+TASK_REF* Ready_Queue_Buff[MAX_NO_OF_TASKS];
+
+/* IDLE Task */
+TASK_REF idle_task;
+uint8_t IdleTask_Led,SysTick_Led;
+
+
+/*===============================================================================
+ *                          Private Function Prototypes	   		                 *
+ ================================================================================*/
+
+/**===============================================================================
+ * Function Name  : Set_MSP.
+ * Brief          : Function To Set The Boundaries Of MSP.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void Set_MSP(void);
+
+/**===============================================================================
+ * Function Name  : IDLE_Task.
+ * Brief          : Function To Set The IDLE Task.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void IDLE_Task(void);
+
+/**===============================================================================
+ * Function Name  : Create_Task_Stack.
+ * Brief          : Function To Create Task Stack.
+ * Parameter (in) : Pointer To Task Reference.
+ * Return         : None.
+ * Note           : None																*/
+void Create_Task_Stack(TASK_REF* task);
+
+/**===============================================================================
+ * Function Name  : Update_Scheduler.
+ * Brief          : Function To Update The Tasks in Scheduler.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void Update_Scheduler(void);
+
+/**===============================================================================
+ * Function Name  : Bubble_Sort.
+ * Brief          : Function To Sort The Tasks Based on Priority.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void Bubble_Sort(void);
+
+/**===============================================================================
+ * Function Name  : Dispatch_Next_Task.
+ * Brief          : Function To Dispatch The Task Based on Priority To Running Mode.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None																*/
+void Dispatch_Next_Task(void);
+
+/**===============================================================================
+ * Function Name  : PendSV_ContextSwitch.
+ * Brief          : Function To Context Switching Between Tasks in PendSV Handler.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None.																*/
+void PendSV_ContextSwitch(void);
+
+/**===============================================================================
+ * Function Name  : SysTick_ISR.
+ * Brief          : Handler of SysTick.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None.																*/
+void SysTick_ISR(void);
+
+/**===============================================================================
+ * Function Name  : Update_Waiting_Time.
+ * Brief          : Function To Update Blocking Time of Task.
+ * Parameter (in) : None.
+ * Return         : None.
+ * Note           : None.																*/
+void Update_Waiting_Time(void);
+
+
+/*===============================================================================
+ *                        Private Functions Definitions  		   	             *
+ ================================================================================*/
+
+void Update_Waiting_Time(void)
+{
+	uint32_t i;
+
+	/* For Every Ticks Count Decrement The Blocking Ticks Count For The Blocked Tasks */
+	for(i = 0; i < MYRTOS_TCB.Number_Of_Active_Tasks; i++)
+	{
+		if(MYRTOS_TCB.Task[i]->Task_State == SUSPEND)
+		{
+			if(MYRTOS_TCB.Task[i]->Task_WaitingTime.Task_Bloking == BLOCKING_ENABLED)
+			{
+				/* Decrement The Blocking Ticks Count */
+				(MYRTOS_TCB.Task[i]->Task_WaitingTime.Task_WaitingTicsCount)--;
+
+				if(MYRTOS_TCB.Task[i]->Task_WaitingTime.Task_WaitingTicsCount == 0)
+				{
+					/* Disable The Blocking of The Task */
+					MYRTOS_TCB.Task[i]->Task_WaitingTime.Task_Bloking = BLOCKING_DISABLED;
+					MYRTOS_TCB.Task[i]->Task_State = WAITING;
+
+					SVC_SET(TASK_WAITING);
+				}
+			}
+
+		}
+	}
+}
+
+void SysTick_ISR(void)
+{
+	SysTick_Led ^= 1;
+
+	/* Update Blocking Ticks Count For Blocked Tasks */
+	Update_Waiting_Time();
+
+	/* Decide What Next */
+	Dispatch_Next_Task();
+
+	/* Trigger PendSV */
+	Trigger_PendSV();
+}
+
+__attribute((naked)) void PendSV_ContextSwitch(void)
+{
+	/* Get PSP Address */
+	GET_PSP(MYRTOS_TCB.Current_Task->Task_Current_PSP);
+
+	/* Context Switch */
+
+	/* PUSH R4 To R11 of Current Task */
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
+	__asm volatile("MOV %[out0],R4" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
+	__asm volatile("MOV %[out0],R5" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
+	__asm volatile("MOV %[out0],R6" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
+	__asm volatile("MOV %[out0],R7" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
+	__asm volatile("MOV %[out0],R8" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
+	__asm volatile("MOV %[out0],R9" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
+	__asm volatile("MOV %[out0],R10" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)--;
+	__asm volatile("MOV %[out0],R11" : [out0] "=r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+
+
+	/* Switch To Next Task */
+	if(MYRTOS_TCB.Next_Task != NULL)
+	{
+		MYRTOS_TCB.Current_Task = MYRTOS_TCB.Next_Task;
+		MYRTOS_TCB.Next_Task = NULL;
+	}
+
+
+	/* Context Restore */
+
+	/* POP R11 To R4 of Next Task */
+	__asm volatile("MOV R11,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
+	__asm volatile("MOV R10,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
+	__asm volatile("MOV R9,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
+	__asm volatile("MOV R8,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
+	__asm volatile("MOV R7,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
+	__asm volatile("MOV R6,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
+	__asm volatile("MOV R5,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
+	__asm volatile("MOV R4,%[in0]" :: [in0] "r" (*(MYRTOS_TCB.Current_Task->Task_Current_PSP)));
+	(MYRTOS_TCB.Current_Task->Task_Current_PSP)++;
+
+	/* Set SP To PSP Of Next Task */
+	SET_PSP(MYRTOS_TCB.Current_Task->Task_Current_PSP);
+	__asm volatile("BX LR");
+
+}
+
+
+void Dispatch_Next_Task(void)
+{
+	/* Handle Tasks */
+	if((Ready_Queue.count == 0) && (MYRTOS_TCB.Current_Task->Task_State == SUSPEND))/* Ready Queue Is Empty and Last Task Is Suspended */
+	{
+		idle_task.Task_State = RUNNING;
+		FIFO_enqueue(&Ready_Queue, &idle_task);
+		MYRTOS_TCB.Next_Task = &idle_task;
+
+	}else if((Ready_Queue.count == 0) && (MYRTOS_TCB.Current_Task->Task_State != SUSPEND))/* Ready Queue Is Empty and There is a Task Not Suspended */
+	{
+		MYRTOS_TCB.Current_Task->Task_State = RUNNING;
+		FIFO_enqueue(&Ready_Queue, MYRTOS_TCB.Current_Task);
+		MYRTOS_TCB.Next_Task = MYRTOS_TCB.Current_Task;
+
+	}else/* Ready Queue Is Not Empty */
+	{
+		FIFO_dequeue(&Ready_Queue, &MYRTOS_TCB.Next_Task);
+		MYRTOS_TCB.Next_Task->Task_State = RUNNING;
+
+		/* Update Ready Queue (Round Robin) */
+		if((MYRTOS_TCB.Current_Task->Task_Priority == MYRTOS_TCB.Next_Task->Task_Priority) && (MYRTOS_TCB.Current_Task->Task_State != SUSPEND))
+		{
+			FIFO_enqueue(&Ready_Queue, MYRTOS_TCB.Current_Task);
+			MYRTOS_TCB.Current_Task->Task_State = READY;
+		}
+
+	}
+}
+
+void SVC_services(uint32_t* p_StackFrame)
+{
+	/* 	Stack -> R0 -> Argument0 = p_StackFrame */
+	uint8_t SVC_serviceNumber;
+
+	/* Access Address in PC [6] Then Read First Byte From [-2] To Get Service Number */
+	SVC_serviceNumber = (((uint8_t*)p_StackFrame[6])[-2]);
+
+	switch(SVC_serviceNumber)
+	{
+	case ACTIVATE_TASK:
+	case TERMINATE_TASK:
+
+		/* Update Scheduler */
+		Update_Scheduler();
+
+		/* Update OS Running state */
+		if(MYRTOS_TCB.RTOS_CurrentState == RTOS_RUNNING)
+		{
+			if(strcmp((sint8_t*)MYRTOS_TCB.Current_Task->Task_Name, "IDLE_TASK") != 0)
+			{
+
+				/* Decide Next Task */
+				Dispatch_Next_Task();
+
+				/* Task Context Switching */
+				Trigger_PendSV();
+
+
+			}
+
+		}
+
+		break;
+
+	case TASK_WAITING:
+		/* Update Scheduler */
+		Update_Scheduler();
+		break;
+
+	default:
+		break;
+	}
+
+}
+
+
+void Set_MSP(void)
+{
+	/* Set Boundaries Of MSP  */
+	MYRTOS_TCB._S_MSP = (uint32_t)&_estack;
+	MYRTOS_TCB._E_MSP = (MYRTOS_TCB._S_MSP - MSP_SIZE);
+
+	/* Set Start Of PSP, ALIGN(8)  */
+	MYRTOS_TCB.PSP_Locator = (MYRTOS_TCB._E_MSP - 8);
+}
+
+
+void IDLE_Task(void)
+{
+	while(1)
+	{
+		IdleTask_Led ^= 1; 
+		WFE();
+	}
+}
+
+
+void Create_Task_Stack(TASK_REF* task)
+{
+	uint8_t i;
+
+	/* Assign PSP of Task To Begin of Stack */
+	task->Task_Current_PSP = (uint32_t*) task->Task_S_PSP;
+
+	/* Create Stack Frame */		/* Pushed By CPU : XPSR, PC, LR, R12, R3, R2, R1, R0
+	  	  	  	  	  	  	  	  	   Pushed By Code : R4, R5, R6, R7, R9, R11				*/
+	(task->Task_Current_PSP)--;
+	*(task->Task_Current_PSP) = 0x01000000; /* Push Dummy xPSR to Stack , Bit-24 Is Set Due To thumb */
+
+	(task->Task_Current_PSP)--;
+	*(task->Task_Current_PSP) = (uint32_t) task->p_Task_Entery; /* Push PC in Stack */
+
+	(task->Task_Current_PSP)--;
+	*(task->Task_Current_PSP) = 0xFFFFFFFD; /* Push LR in Stack */
+
+	for(i = 0; i < 13; i++)
+	{
+		(task->Task_Current_PSP)--;
+		*(task->Task_Current_PSP) = 0x00000000; /* Push R0, R2, R3, ..., R12 in Stack */
+	}
+
+}
+
+void Update_Scheduler(void)
+{
+	uint8_t i = 0;
+	TASK_REF* temp = NULL;
+	TASK_REF* p_task;
+	TASK_REF* p_nexttask;
+
+	/* Sort The Tasks Based On The Priority */
+	Bubble_Sort();
+
+	/* Free The Ready Queue */
+	while(FIFO_dequeue(&Ready_Queue, &temp) != FIFO_EMPTY);
+
+	/* Fill The Ready Queue */
+	while(i < MYRTOS_TCB.Number_Of_Active_Tasks)
+	{
+		p_task = MYRTOS_TCB.Task[i];
+		p_nexttask = MYRTOS_TCB.Task[i+1];
+
+		if(p_task->Task_State != SUSPEND)
+		{
+			/* In Case Last Task in The Table */
+			if(p_nexttask->Task_State == SUSPEND)
+			{
+				FIFO_enqueue(&Ready_Queue, p_task);
+				p_task->Task_State = READY;
+				break;
+			}
+
+			/* Check Priority of Tasks Already Sorted */
+			if(p_task->Task_Priority < p_nexttask->Task_Priority)
+			{
+
+				FIFO_enqueue(&Ready_Queue, p_task);
+				p_task->Task_State = READY;
+				break;
+
+			}else if(p_task->Task_Priority == p_nexttask->Task_Priority)
+			{
+				FIFO_enqueue(&Ready_Queue, p_task);
+				p_task->Task_State = READY;
+			}else
+			{
+				/* MISRA */
+				break;
+			}
+		}
+
+		i++;
+	}
+}
+
+void Bubble_Sort(void)
+{
+	uint8_t i,j,n;
+	TASK_REF* temp;
+
+	n = MYRTOS_TCB.Number_Of_Active_Tasks;
+
+	for(i = 0; i < n - 1; i++)
+	{
+		for(j = 0; j < n - i - 1; j++)
+		{
+			/* Smaller Number Priority Is Higher Priority */
+			if((MYRTOS_TCB.Task[j]->Task_Priority) > (MYRTOS_TCB.Task[j+1]->Task_Priority) )
+			{
+				/* Swap Tasks */
+				temp = MYRTOS_TCB.Task[j];
+				MYRTOS_TCB.Task[j] = MYRTOS_TCB.Task[j+1];
+				MYRTOS_TCB.Task[j+1] = temp;
+			}
+		}
+	}
+}
+
+
+/*===============================================================================
+ *                         	   APIs Definitions 		   		                 *
+ ================================================================================*/
+RTOS_ERROR_STATE MYRTOS_Init(void)
+{
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
+	/* Set RTOS Mode To Suspend */
+	MYRTOS_TCB.RTOS_CurrentState = RTOS_SUSPEND;
+
+	/* Set Number of Active Task */
+	MYRTOS_TCB.Number_Of_Active_Tasks = 0;
+
+	/* Set MSP */
+	Set_MSP();
+
+	/* Create RTOS Ready FIFO */
+	if(FIFO_init(&Ready_Queue, Ready_Queue_Buff, MAX_NO_OF_TASKS) != FIFO_NO_ERROR)
+		error_state += READY_FIFO_INIT_ERROR;
+
+	/* Set Idle Task */
+	strcpy(idle_task.Task_Name,"IDLE_TASK");
+	idle_task.Task_StackSize = 256;
+	idle_task.Task_Priority = 100;
+	idle_task.p_Task_Entery = IDLE_Task;
+
+	MYRTOS_CreateTask(&idle_task);
+
+
+	return error_state;
+}
+
+RTOS_ERROR_STATE MYRTOS_StartRTOS(void)
+{
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
+	/* Update RTOS State */
+	MYRTOS_TCB.RTOS_CurrentState = RTOS_RUNNING;
+
+	/* Set Current Task To Idle */
+	MYRTOS_TCB.Current_Task = &idle_task;
+
+	/* Activate Current Task */
+	error_state += MYRTOS_ActivateTask(MYRTOS_TCB.Current_Task);
+
+	/* Start The Ticker */
+	MyRTOS_StartTicker();
+
+	/* Set PSP To Current Task */
+	SET_PSP(MYRTOS_TCB.Current_Task->Task_Current_PSP);
+
+	/* Switch SP -> PSP */
+	SET_SP_TO_PSP();
+
+	/* Switch To Unprivileged Access Level */
+	UNPRIVILEGED_ACCESS_LEVEL();
+
+	/* Set Task Entry */
+	MYRTOS_TCB.Current_Task->p_Task_Entery();
+
+	return error_state;
+}
+
+
+RTOS_ERROR_STATE MYRTOS_CreateTask(TASK_REF* task)
+{
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
+	/* Set Boundaries PSP */
+	task->Task_S_PSP = MYRTOS_TCB.PSP_Locator;
+	task->Task_E_PSP = task->Task_S_PSP - task->Task_StackSize;
+
+	/* Set PSP Locator, ALIGN(8)  */
+	MYRTOS_TCB.PSP_Locator = task->Task_E_PSP - 8;
+
+	//	/* Check Boundaries of Stack */
+	//	if(task->Task_E_PSP < ((uint32_t)&_eheap))
+	//		return TASK_EXCEED_STACK_BAOUNDARIES;
+
+	/* Create Stack of Task */
+	Create_Task_Stack(task);
+
+	/* Assign Task To TCB */
+	MYRTOS_TCB.Task[MYRTOS_TCB.Number_Of_Active_Tasks] = task;
+	(MYRTOS_TCB.Number_Of_Active_Tasks)++;
+
+	/* Set Task State To Suspended */
+	task->Task_State = SUSPEND;
+
+
+	return error_state;
+}
+
+
+RTOS_ERROR_STATE MYRTOS_ActivateTask(TASK_REF* task)
+{
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
+	/* Set Task State To Waiting */
+	task->Task_State = WAITING;
+
+	/* Call SVC Exception */
+	SVC_SET(ACTIVATE_TASK);
+
+	return error_state;
+}
+
+
+RTOS_ERROR_STATE MYRTOS_TerminateTask(TASK_REF* task)
+{
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
+	/* Set Task State To Suspend */
+	task->Task_State = SUSPEND;
+
+	/* Call SVC Exception */
+	SVC_SET(TERMINATE_TASK);
+
+	return error_state;
+}
+
+RTOS_ERROR_STATE MYRTOS_WaitTask(TASK_REF* task, uint32_t a_BlockTicks)
+{
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
+	/* Set Waiting Time and Task Blocking State */
+	task->Task_WaitingTime.Task_Bloking = BLOCKING_ENABLED;
+	task->Task_WaitingTime.Task_WaitingTicsCount = a_BlockTicks;
+
+	/* Set Task State */
+	task->Task_State = SUSPEND;
+
+	/* Terminate Task Temporary */
+	SVC_SET(TERMINATE_TASK);
+
+	return error_state;
+}
+
+
+RTOS_ERROR_STATE MYRTOS_AcquireMutex(TASK_REF* task, MUTEX_REF* mutex)
+{
+	RTOS_ERROR_STATE error_state = NO_ERROR;
+
+	if((task == mutex->Current_Task_Acquire_Mutex) || (task == mutex->Next_Task_Acquire_Mutex) )
+	{
+
+	}
+
+	return error_state;
+}
+
+
+RTOS_ERROR_STATE MYRTOS_RelaseMutex(MUTEX_REF* mutex)
+{
+
+}

@@ -3681,3 +3681,2039 @@ Finished building: MyOwnRTOS.list
 Finished building: MyOwnRTOS.bin
  
  
+19:56:55 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:116:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:122:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:128:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:134:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4120	      8	   2832	   6960	   1b30	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+19:57:14 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4120	      8	   2832	   6960	   1b30	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+20:03:17 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+20:03:27 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+20:10:37 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:138:24: error: 'Task4_Fun' undeclared (first use in this function); did you mean 'Task1_Fun'?
+  task4.p_Task_Entery = Task4_Fun;
+                        ^~~~~~~~~
+                        Task1_Fun
+../Src/main.c:138:24: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:24: Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+20:10:49 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+20:10:57 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+20:12:48 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+20:13:08 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+20:15:11 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.list
+Finished building: MyOwnRTOS.bin
+ 
+ 
+ 
+20:15:17 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+20:19:07 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+20:40:32 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/rtos_fifo.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/rtos_fifo.d" -MT"MyRTOS/rtos_fifo.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/rtos_fifo.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/scheduler.h:19:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/rtos_fifo.h:21,
+                 from ../MyRTOS/rtos_fifo.c:16:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:56:0: warning: "__WFE" redefined
+ #define __WFE()     __asm volatile("WFE")
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/cmsis_compiler.h:54:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:116,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/scheduler.h:19,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/rtos_fifo.h:21,
+                 from ../MyRTOS/rtos_fifo.c:16:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/cmsis_gcc.h:242:0: note: this is the location of the previous definition
+ #define __WFE()                             __ASM volatile ("wfe":::"memory")
+ 
+In file included from ../MyRTOS/cortex_mx_os_porting.c:17:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:56:0: warning: "__WFE" redefined
+ #define __WFE()     __asm volatile("WFE")
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/cmsis_compiler.h:54:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:116,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/cmsis_gcc.h:242:0: note: this is the location of the previous definition
+ #define __WFE()                             __ASM volatile ("wfe":::"memory")
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/scheduler.h:19:0,
+                 from ../MyRTOS/scheduler.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:56:0: warning: "__WFE" redefined
+ #define __WFE()     __asm volatile("WFE")
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/cmsis_compiler.h:54:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:116,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/scheduler.h:19,
+                 from ../MyRTOS/scheduler.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/cmsis_gcc.h:242:0: note: this is the location of the previous definition
+ #define __WFE()                             __ASM volatile ("wfe":::"memory")
+ 
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/scheduler.h:19:0,
+                 from ../Src/main.c:33:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:56:0: warning: "__WFE" redefined
+ #define __WFE()     __asm volatile("WFE")
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/cmsis_compiler.h:54:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:116,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/cmsis_gcc.h:242:0: note: this is the location of the previous definition
+ #define __WFE()                             __ASM volatile ("wfe":::"memory")
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+20:41:22 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/rtos_fifo.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/rtos_fifo.d" -MT"MyRTOS/rtos_fifo.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/rtos_fifo.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+ 
+20:41:32 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+20:41:53 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/rtos_fifo.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/rtos_fifo.d" -MT"MyRTOS/rtos_fifo.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/rtos_fifo.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+ 
+ 
+Finished building: MyOwnRTOS.list
+ 
+20:42:04 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/rtos_fifo.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/rtos_fifo.d" -MT"MyRTOS/rtos_fifo.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/rtos_fifo.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+20:42:29 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+21:21:44 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+10:12:32 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4132	      8	   2832	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+10:20:41 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:138:24: error: 'Task4_Fun' undeclared (first use in this function); did you mean 'Task1_Fun'?
+  task4.p_Task_Entery = Task4_Fun;
+                        ^~~~~~~~~
+                        Task1_Fun
+../Src/main.c:138:24: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:24: Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+10:21:09 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.list
+ 
+Finished building: MyOwnRTOS.bin
+ 
+10:21:26 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+10:26:01 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+ 
+10:48:50 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:489:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3900	      8	   2824	   6732	   1a4c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+ 
+ 
+Finished building: MyOwnRTOS.list
+ 
+10:56:42 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+ 
+10:57:44 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c:150:6: error: conflicting types for 'PendSV_ContextSwitch'
+ void PendSV_ContextSwitch(void)
+      ^~~~~~~~~~~~~~~~~~~~
+../MyRTOS/scheduler.c:125:6: note: previous declaration of 'PendSV_ContextSwitch' was here
+ void PendSV_ContextSwitch(uint32_t* p_CurrentPSP);
+      ^~~~~~~~~~~~~~~~~~~~
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+make: *** [MyRTOS/subdir.mk:28: MyRTOS/scheduler.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+10:58:01 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3924	      8	   2824	   6756	   1a64	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+ 
+ 
+Finished building: MyOwnRTOS.list
+ 
+10:59:20 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3908	      8	   2824	   6740	   1a54	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.list
+ 
+Finished building: MyOwnRTOS.bin
+ 
+ 
+11:07:58 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:429:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3912	      8	   2824	   6744	   1a58	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+11:15:11 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4120	      8	   2832	   6960	   1b30	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+11:19:01 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/cortex_mx_os_porting.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/cortex_mx_os_porting.d" -MT"MyRTOS/cortex_mx_os_porting.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/cortex_mx_os_porting.o"
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8_rcc_driver.h:20:0,
+                 from ../MyRTOS/cortex_mx_os_porting.c:18:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc/cortex_mx_os_porting.h:18,
+                 from ../MyRTOS/cortex_mx_os_porting.c:17:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4116	      8	   2832	   6956	   1b2c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+ 
+14:03:44 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/rtos_fifo.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/rtos_fifo.d" -MT"MyRTOS/rtos_fifo.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/rtos_fifo.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:443:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4116	      8	   2832	   6956	   1b2c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.list
+ 
+Finished building: MyOwnRTOS.bin
+ 
+15:17:44 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/rtos_fifo.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/rtos_fifo.d" -MT"MyRTOS/rtos_fifo.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/rtos_fifo.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:472:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:117:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:123:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:129:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:135:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4256	      8	   2832	   7096	   1bb8	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+15:21:18 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:112:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:118:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:124:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4140	      8	   2824	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+15:24:45 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4140	      8	   2824	   6972	   1b3c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+18:18:49 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/rtos_fifo.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/rtos_fifo.d" -MT"MyRTOS/rtos_fifo.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/rtos_fifo.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:467:3: error: 'error_state' undeclared (first use in this function)
+   error_state += READY_FIFO_INIT_ERROR;
+   ^~~~~~~~~~~
+../MyRTOS/scheduler.c:467:3: note: each undeclared identifier is reported only once for each function it appears in
+../MyRTOS/scheduler.c:470:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../MyRTOS/scheduler.c: In function 'MYRTOS_StartRTOS':
+../MyRTOS/scheduler.c:490:2: error: 'error_state' undeclared (first use in this function)
+  error_state += MYRTOS_ActivateTask(MYRTOS_TCB.Current_Task);
+  ^~~~~~~~~~~
+make: *** [MyRTOS/subdir.mk:28: MyRTOS/scheduler.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:112:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:118:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:124:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:21:44 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:470:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4096	      8	   2824	   6928	   1b10	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:22:30 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4096	      8	   2824	   6928	   1b10	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+18:25:32 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:118:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:124:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:130:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4096	      8	   2920	   7024	   1b70	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:41:17 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'Task3_Fun':
+../Src/main.c:90:6: error: 'count' undeclared (first use in this function)
+   if(count == 100)
+      ^~~~~
+../Src/main.c:90:6: note: each undeclared identifier is reported only once for each function it appears in
+../Src/main.c: In function 'System_Init':
+../Src/main.c:152:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:158:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:164:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:170:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+make: *** [Src/subdir.mk:24: Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+18:41:51 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:153:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:159:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:165:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:171:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4508	      8	   2936	   7452	   1d1c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:44:03 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:152:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex1.Mutex_Name,"MUTEX_1");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:156:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex2.Mutex_Name,"MUTEX_2");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:161:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:167:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:173:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:179:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4596	      8	   2944	   7548	   1d7c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+ 
+18:44:12 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4596	      8	   2944	   7548	   1d7c	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+18:49:05 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:152:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex1.Mutex_Name,"MUTEX_1");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:156:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex2.Mutex_Name,"MUTEX_2");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:161:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:167:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:173:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:179:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4592	      8	   2944	   7544	   1d78	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 
+18:49:18 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4592	      8	   2944	   7544	   1d78	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+18:52:35 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:152:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex1.Mutex_Name,"MUTEX_1");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:156:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex2.Mutex_Name,"MUTEX_2");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:161:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:167:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:173:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:179:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4592	      8	   2944	   7544	   1d78	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:54:26 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../Src/main.c: In function 'System_Init':
+../Src/main.c:154:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex1.Mutex_Name,"MUTEX_1");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:158:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex2.Mutex_Name,"MUTEX_2");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:163:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:169:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:175:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:181:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4608	      8	   2944	   7560	   1d88	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+Finished building: MyOwnRTOS.list
+ 
+ 
+18:54:33 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4608	      8	   2944	   7560	   1d88	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+19:26:28 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+make -j4 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
+In file included from ../Src/main.c:28:0:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE         0xE000E100UL
+ 
+In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3.h:98:0,
+                 from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:24,
+                 from ../Src/main.c:26:
+C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:470:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c: In function 'System_Init':
+../Src/main.c:155:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex1.Mutex_Name,"MUTEX_1");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:159:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex2.Mutex_Name,"MUTEX_2");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:164:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task1.Task_Name,"TASK_1");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:170:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task2.Task_Name,"TASK_2");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:176:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:182:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "MyOwnRTOS.axf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\abdullah\Desktop\MyOwnRTOS\MyOwnRTOS\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyOwnRTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyOwnRTOS.axf
+ 
+arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
+arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
+arm-none-eabi-size   MyOwnRTOS.axf 
+   text	   data	    bss	    dec	    hex	filename
+   4608	      8	   2944	   7560	   1d88	MyOwnRTOS.axf
+Finished building: default.size.stdout
+ 
+Finished building: MyOwnRTOS.bin
+ 
+Finished building: MyOwnRTOS.list
+ 

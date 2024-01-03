@@ -45,7 +45,13 @@
  ================================================================================*/
 
 TASK_REF task1,task2,task3,task4;
+
 uint8_t Task1_Led, Task2_Led, Task3_Led,Task4_Led;
+
+MUTEX_REF Mutex1, Mutex2;
+
+uint8_t Paylpad1[4] = {0};
+uint8_t Paylpad2[4] = {0};
 
 /*===============================================================================
  *     		       		 	ISR Functions Definition 		                     *
@@ -55,46 +61,84 @@ uint8_t Task1_Led, Task2_Led, Task3_Led,Task4_Led;
 /*===============================================================================
  *                                Application                                    *
  ================================================================================*/
-//void Task4_Fun(void)
-//{
-//	static uint32_t count = 0;
-//	while(1)
-//	{
-//		Task4_Led ^= 1;
-//		count++;
-//
-//		if(count == 0xFFF)
-//		{
-//			MYRTOS_TerminateTask(&task4);
-//			count = 0;
-//		}
-//	}
-//}
+void Task4_Fun(void)
+{
+	static uint32_t count = 0;
+	while(1)
+	{
+		Task4_Led ^= 1;
+		count++;
+
+		if(count == 10)
+		{
+			MYRTOS_AcquireMutex(&task4, &Mutex1);
+		}
+		if(count == 300)
+		{
+			count = 0;
+			MYRTOS_ReleaseMutex(&Mutex1);
+			MYRTOS_TerminateTask(&task4);
+		}
+	}
+}
 
 void Task3_Fun(void)
 {
+	static uint32_t count = 0;
 	while(1)
 	{
 		Task3_Led ^= 1;
-		MYRTOS_WaitTask(&task3, 100);
+		count++;
+
+		if(count == 100)
+		{
+			MYRTOS_ActivateTask(&task4);
+		}
+		if(count == 200)
+		{
+			count = 0;
+			MYRTOS_TerminateTask(&task3);
+		}
 	}
 }
 
 void Task2_Fun(void)
 {
+	static uint32_t count = 0;
 	while(1)
 	{
 		Task2_Led ^= 1;
-		MYRTOS_WaitTask(&task2, 300);
+		count++;
+		if(count == 100)
+		{
+			MYRTOS_ActivateTask(&task3);
+		}
+		if(count == 200)
+		{
+			count = 0;
+			MYRTOS_TerminateTask(&task2);
+		}
 	}
 }
 
 void Task1_Fun(void)
 {
+	static uint32_t count = 0;
 	while(1)
 	{
 		Task1_Led ^= 1;
-		MYRTOS_WaitTask(&task1, 500);
+		count++;
+
+		if(count == 100)
+		{
+			MYRTOS_AcquireMutex(&task1, &Mutex1);
+			MYRTOS_ActivateTask(&task2);
+		}
+		if(count == 200)
+		{
+			MYRTOS_ReleaseMutex(&Mutex1);
+			count = 0;
+		}
 	}
 }
 
@@ -107,11 +151,19 @@ void System_Init(void)
 	/* Initialize The RTOS */
 	MYRTOS_Init();
 
-	/* Initialize The Tasks */
+	/* Initialize The Mutex */
+	strcpy(Mutex1.Mutex_Name,"MUTEX_1");
+	Mutex1.Payload_Size = 4;
+	Mutex1.p_Payload = Paylpad1;
 
+	strcpy(Mutex2.Mutex_Name,"MUTEX_2");
+	Mutex2.Payload_Size = 4;
+	Mutex2.p_Payload = Paylpad2;
+
+	/* Initialize The Tasks */
 	strcpy(task1.Task_Name,"TASK_1");
 	task1.Task_StackSize = 1024;
-	task1.Task_Priority = 3;
+	task1.Task_Priority = 4;
 	task1.p_Task_Entery = Task1_Fun;
 	MYRTOS_CreateTask(&task1);
 
@@ -123,20 +175,19 @@ void System_Init(void)
 
 	strcpy(task3.Task_Name,"TASK_3");
 	task3.Task_StackSize = 1024;
-	task3.Task_Priority = 3;
+	task3.Task_Priority = 2;
 	task3.p_Task_Entery = Task3_Fun;
 	MYRTOS_CreateTask(&task3);
 
-//	strcpy(task4.Task_Name,"TASK_4");
-//	task4.Task_StackSize = 512;
-//	task4.Task_Priority = 1;
-//	task4.p_Task_Entery = Task4_Fun;
-//	MYRTOS_CreateTask(&task4);
+	strcpy(task4.Task_Name,"TASK_4");
+	task4.Task_StackSize = 1024;
+	task4.Task_Priority = 1;
+	task4.p_Task_Entery = Task4_Fun;
+	MYRTOS_CreateTask(&task4);
 
 
 	MYRTOS_ActivateTask(&task1);
-	MYRTOS_ActivateTask(&task2);
-	MYRTOS_ActivateTask(&task3);
+
 
 
 

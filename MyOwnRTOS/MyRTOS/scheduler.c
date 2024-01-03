@@ -453,8 +453,6 @@ void Bubble_Sort(void)
  ================================================================================*/
 RTOS_ERROR_STATE MYRTOS_Init(void)
 {
-	RTOS_ERROR_STATE error_state = NO_ERROR;
-
 	/* Set RTOS Mode To Suspend */
 	MYRTOS_TCB.RTOS_CurrentState = RTOS_SUSPEND;
 
@@ -466,7 +464,7 @@ RTOS_ERROR_STATE MYRTOS_Init(void)
 
 	/* Create RTOS Ready FIFO */
 	if(FIFO_init(&Ready_Queue, Ready_Queue_Buff, MAX_NO_OF_TASKS) != FIFO_NO_ERROR)
-		error_state += READY_FIFO_INIT_ERROR;
+		return READY_FIFO_INIT_ERROR;
 
 	/* Set Idle Task */
 	strcpy(idle_task.Task_Name,"IDLE_TASK");
@@ -477,13 +475,11 @@ RTOS_ERROR_STATE MYRTOS_Init(void)
 	MYRTOS_CreateTask(&idle_task);
 
 
-	return error_state;
+	return NO_ERROR;
 }
 
 RTOS_ERROR_STATE MYRTOS_StartRTOS(void)
 {
-	RTOS_ERROR_STATE error_state = NO_ERROR;
-
 	/* Update RTOS State */
 	MYRTOS_TCB.RTOS_CurrentState = RTOS_RUNNING;
 
@@ -491,7 +487,7 @@ RTOS_ERROR_STATE MYRTOS_StartRTOS(void)
 	MYRTOS_TCB.Current_Task = &idle_task;
 
 	/* Activate Current Task */
-	error_state += MYRTOS_ActivateTask(MYRTOS_TCB.Current_Task);
+	MYRTOS_ActivateTask(MYRTOS_TCB.Current_Task);
 
 	/* Start The Ticker */
 	MyRTOS_StartTicker();
@@ -508,24 +504,18 @@ RTOS_ERROR_STATE MYRTOS_StartRTOS(void)
 	/* Set Task Entry */
 	MYRTOS_TCB.Current_Task->p_Task_Entery();
 
-	return error_state;
+	return NO_ERROR;
 }
 
 
 RTOS_ERROR_STATE MYRTOS_CreateTask(TASK_REF* task)
 {
-	RTOS_ERROR_STATE error_state = NO_ERROR;
-
 	/* Set Boundaries PSP */
 	task->Task_S_PSP = MYRTOS_TCB.PSP_Locator;
 	task->Task_E_PSP = task->Task_S_PSP - task->Task_StackSize;
 
 	/* Set PSP Locator, ALIGN(8)  */
 	MYRTOS_TCB.PSP_Locator = task->Task_E_PSP - 8;
-
-	//	/* Check Boundaries of Stack */
-	//	if(task->Task_E_PSP < ((uint32_t)&_eheap))
-	//		return TASK_EXCEED_STACK_BAOUNDARIES;
 
 	/* Create Stack of Task */
 	Create_Task_Stack(task);
@@ -538,21 +528,19 @@ RTOS_ERROR_STATE MYRTOS_CreateTask(TASK_REF* task)
 	task->Task_State = SUSPEND;
 
 
-	return error_state;
+	return NO_ERROR;
 }
 
 
 RTOS_ERROR_STATE MYRTOS_ActivateTask(TASK_REF* task)
 {
-	RTOS_ERROR_STATE error_state = NO_ERROR;
-
 	/* Set Task State To Waiting */
 	task->Task_State = WAITING;
 
 	/* Call SVC Exception */
 	SVC_SET(ACTIVATE_TASK);
 
-	return error_state;
+	return NO_ERROR;
 }
 
 
@@ -571,8 +559,6 @@ RTOS_ERROR_STATE MYRTOS_TerminateTask(TASK_REF* task)
 
 RTOS_ERROR_STATE MYRTOS_WaitTask(TASK_REF* task, uint32_t a_BlockTicks)
 {
-	RTOS_ERROR_STATE error_state = NO_ERROR;
-
 	/* Set Waiting Time and Task Blocking State */
 	task->Task_WaitingTime.Task_Bloking = BLOCKING_ENABLED;
 	task->Task_WaitingTime.Task_WaitingTicsCount = a_BlockTicks;
@@ -583,5 +569,63 @@ RTOS_ERROR_STATE MYRTOS_WaitTask(TASK_REF* task, uint32_t a_BlockTicks)
 	/* Terminate Task Temporary */
 	SVC_SET(TERMINATE_TASK);
 
-	return error_state;
+	return NO_ERROR;
+}
+
+
+RTOS_ERROR_STATE MYRTOS_AcquireMutex(TASK_REF* task, MUTEX_REF* mutex)
+{
+	/* Check If Mutex Already Acquired By The Task */
+	if((task == mutex->Current_Task_Acquire_Mutex) || (task == mutex->Next_Task_Acquire_Mutex) )
+	{
+		return TASK_ALREADY_ACQUIRED_MUTEX;
+	}
+
+	/* Check Mutex Free */
+	if(mutex->Current_Task_Acquire_Mutex == NULL)
+	{
+		/* Acquire Mutex */
+		mutex->Current_Task_Acquire_Mutex = task;
+	}else
+	{
+		/* Check No Pending Request To Acquire Mutex */
+		if(mutex->Next_Task_Acquire_Mutex == NULL)
+		{
+			/* Pend Request To Acquire Mutex */
+			mutex->Next_Task_Acquire_Mutex = task;
+
+			/* Move To Suspend Until Mutex Released */
+			mutex->Next_Task_Acquire_Mutex->Task_State = SUSPEND;
+			SVC_SET(TERMINATE_TASK);
+
+		}else
+		{
+			return MUTEX_IS_NOT_AVAILABLE;
+		}
+	}
+
+
+	return NO_ERROR;
+}
+
+
+RTOS_ERROR_STATE MYRTOS_ReleaseMutex(MUTEX_REF* mutex)
+{
+	if(mutex->Current_Task_Acquire_Mutex == NULL)
+	{
+		return MUTEX_ALREADY_RELEASED;
+
+	}else
+	{
+		/* Release Mutex */
+		mutex->Current_Task_Acquire_Mutex = mutex->Next_Task_Acquire_Mutex;
+		mutex->Next_Task_Acquire_Mutex = NULL;
+
+		/* Update State */
+		mutex->Current_Task_Acquire_Mutex->Task_State = WAITING;
+		SVC_SET(ACTIVATE_TASK);
+
+	}
+
+	return NO_ERROR;
 }

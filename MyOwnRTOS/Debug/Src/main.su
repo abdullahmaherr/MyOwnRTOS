@@ -1,5 +1,6 @@
-main.c:74:6:Task3_Fun	8	static
-main.c:83:6:Task2_Fun	8	static
-main.c:92:6:Task1_Fun	8	static
-main.c:101:6:System_Init	8	static
-main.c:149:5:main	8	static
+main.c:64:6:Task4_Fun	8	static
+main.c:85:6:Task3_Fun	8	static
+main.c:105:6:Task2_Fun	8	static
+main.c:124:6:Task1_Fun	8	static
+main.c:145:6:System_Init	8	static
+main.c:200:5:main	8	static

@@ -23,7 +23,12 @@
  ================================================================================*/
 typedef enum
 {
-	NO_ERROR,READY_FIFO_INIT_ERROR,TASK_EXCEED_STACK_BAOUNDARIES
+	NO_ERROR,
+	READY_FIFO_INIT_ERROR,
+	TASK_EXCEED_STACK_BAOUNDARIES,
+	TASK_ALREADY_ACQUIRED_MUTEX,
+	MUTEX_IS_NOT_AVAILABLE,
+	MUTEX_ALREADY_RELEASED
 }RTOS_ERROR_STATE;
 
 typedef enum
@@ -58,6 +63,15 @@ typedef struct
 	TASK_STATE Task_State;
 	TASK_WAITING_TIME Task_WaitingTime;
 }TASK_REF;
+
+typedef struct
+{
+	uint8_t Mutex_Name[30];
+	uint32_t Payload_Size;
+	uint8_t* p_Payload;
+	TASK_REF* Current_Task_Acquire_Mutex;
+	TASK_REF* Next_Task_Acquire_Mutex;
+}MUTEX_REF;
 /*===============================================================================
  *               			          Macros 			                         *
  ================================================================================*/
@@ -117,5 +131,22 @@ RTOS_ERROR_STATE MYRTOS_TerminateTask(TASK_REF* task);
  * Return         : Error State.
  * Note           : None																*/
 RTOS_ERROR_STATE MYRTOS_WaitTask(TASK_REF* task, uint32_t a_BlockTicks);
+
+/**===============================================================================
+ * Function Name  : MYRTOS_AcquireMutex.
+ * Brief          : Function To Acquire Mutex.
+ * Parameter (in) : Pointer To Task Reference.
+ * Parameter (in) : Pointer To Mutex Reference.
+ * Return         : Error State.
+ * Note           : None																*/
+RTOS_ERROR_STATE MYRTOS_AcquireMutex(TASK_REF* task, MUTEX_REF* mutex);
+
+/**===============================================================================
+ * Function Name  : MYRTOS_ReleaseMutex.
+ * Brief          : Function To Release Mutex.
+ * Parameter (in) : Pointer To Mutex Reference.
+ * Return         : Error State.
+ * Note           : None																*/
+RTOS_ERROR_STATE MYRTOS_ReleaseMutex(MUTEX_REF* mutex);
 
 #endif /* INC_SCHEDULER_H_ */

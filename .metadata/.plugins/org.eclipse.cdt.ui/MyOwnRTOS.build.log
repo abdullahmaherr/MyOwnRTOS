@@ -1,6 +1,7 @@
-18:41:11 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
+19:26:28 **** Incremental Build of configuration Debug for project MyOwnRTOS ****
 make -j4 all 
 arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../MyRTOS/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/MyRTOS/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc" -I"C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"MyRTOS/scheduler.d" -MT"MyRTOS/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MyRTOS/scheduler.o"
 In file included from ../Src/main.c:28:0:
 C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/Drivers/inc/stm32f103c8.h:38:0: warning: "NVIC_BASE" redefined
  #define NVIC_BASE         0xE000E100UL
@@ -11,23 +12,52 @@ In file included from C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/ARMCM3
 C:/Users/abdullah/Desktop/MyOwnRTOS/MyOwnRTOS/CMSIS/core_cm3.h:1387:0: note: this is the location of the previous definition
  #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
  
+../MyRTOS/scheduler.c: In function 'MYRTOS_Init':
+../MyRTOS/scheduler.c:470:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(idle_task.Task_Name,"IDLE_TASK");
+         ^~~~~~~~~
+In file included from ../MyRTOS/scheduler.c:16:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
 ../Src/main.c: In function 'System_Init':
-../Src/main.c:93:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+../Src/main.c:155:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex1.Mutex_Name,"MUTEX_1");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:159:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(Mutex2.Mutex_Name,"MUTEX_2");
+         ^~~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:164:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
   strcpy(task1.Task_Name,"TASK_1");
          ^~~~~
 In file included from ../Src/main.c:24:0:
 c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
  char  *strcpy (char *__restrict, const char *__restrict);
         ^~~~~~
-../Src/main.c:99:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+../Src/main.c:170:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
   strcpy(task2.Task_Name,"TASK_2");
          ^~~~~
 In file included from ../Src/main.c:24:0:
 c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
  char  *strcpy (char *__restrict, const char *__restrict);
         ^~~~~~
-../Src/main.c:105:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+../Src/main.c:176:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
   strcpy(task3.Task_Name,"TASK_3");
+         ^~~~~
+In file included from ../Src/main.c:24:0:
+c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char  *strcpy (char *__restrict, const char *__restrict);
+        ^~~~~~
+../Src/main.c:182:9: warning: pointer targets in passing argument 1 of 'strcpy' differ in signedness [-Wpointer-sign]
+  strcpy(task4.Task_Name,"TASK_4");
          ^~~~~
 In file included from ../Src/main.c:24:0:
 c:\st\stm32cubeide_1.4.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208\tools\arm-none-eabi\include\string.h:38:8: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
@@ -40,13 +70,13 @@ arm-none-eabi-objdump -h -S  MyOwnRTOS.axf  > "MyOwnRTOS.list"
 arm-none-eabi-objcopy  -O binary  MyOwnRTOS.axf  "MyOwnRTOS.bin"
 arm-none-eabi-size   MyOwnRTOS.axf 
    text	   data	    bss	    dec	    hex	filename
-   3924	      8	   2752	   6684	   1a1c	MyOwnRTOS.axf
+   4608	      8	   2944	   7560	   1d88	MyOwnRTOS.axf
 Finished building: default.size.stdout
  
-Finished building: MyOwnRTOS.list
 Finished building: MyOwnRTOS.bin
  
+Finished building: MyOwnRTOS.list
  
 
-18:41:16 Build Finished. 0 errors, 4 warnings. (took 4s.571ms)
+19:26:40 Build Finished. 0 errors, 8 warnings. (took 11s.932ms)
 
