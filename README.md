@@ -7,10 +7,9 @@ MyOwnRTOS is a simple and lightweight Real-Time Operating System (RTOS) implemen
 ## Features
 
 * Task scheduling: Run multiple tasks concurrently with a cooperative multitasking model.
-![alt text]()
+![alt text](https://github.com/abdullahmaherr/MyOwnRTOS/blob/main/SIM/Image/Managment.png)
 * Priority-based scheduling: Assign priority levels to tasks for efficient resource utilization.
-![alt text]()
+![alt text](https://github.com/abdullahmaherr/MyOwnRTOS/blob/main/SIM/Image/Priority.png)
 * Mutex support: Implement synchronization between tasks using Mutex.
-![alt text]()
+![alt text](https://github.com/abdullahmaherr/MyOwnRTOS/blob/main/SIM/Image/Mutex.png)
 * Time management: Utilize a basic system timer for timekeeping and delays.
-![alt text]()
